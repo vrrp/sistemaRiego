@@ -88,18 +88,17 @@ def iniciar_servidor(ip):
                 conn.send("HTTP/1.1 404 Not Found\r\n\r\n")
         else:
             html = """<!DOCTYPE html>
-<html>
-<head><meta charset="UTF-8"><title>Temperatura ESP32</title></head>
-<body style="font-family: sans-serif; text-align:center; margin-top:50px;">
-<h1>🌡️ Temperatura Actual</h1>
-<h2 style="font-size:48px;">{} °C</h2>
-<p><a href="/csv"><button style="font-size:20px; padding:10px 20px;">📥 Descargar CSV</button></a></p>
-</body>
-</html>""".format(ultima_temp)
-            conn.send("HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n")
-            conn.send(html)
-
-        conn.close()
+                        <html>
+                        <head><meta charset="UTF-8"><title>Temperatura ESP32</title></head>
+                        <body style="font-family: sans-serif; text-align:center; margin-top:50px;">
+                        <h1>🌡️ Temperatura Actual</h1>
+                        <h2 style="font-size:48px;">{} °C</h2>
+                        <p><a href="/csv"><button style="font-size:20px; padding:10px 20px;">📥 Descargar CSV</button></a></p>
+                        </body>
+                        </html>""".format(ultima_temp)
+                                    conn.send("HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n")
+                                    conn.send(html)
+                                    conn.close()
 
 # ---------- MAIN ----------
 ip = conectar_wifi()
