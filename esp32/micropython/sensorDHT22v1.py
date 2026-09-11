@@ -24,10 +24,10 @@ except OSError:
 while True:
     try:
         sensor_dht22.measure()
-        t = sensor_dht22.temperature()
-        h = sensor_dht22.humidity()
+        t = round(sensor_dht22.temperature(), 1)
+        h = round(sensor_dht22.humidity(), 1)
         
-        print(f"Temp : {t} / hum : {h}")
+        print(f"Temp : {t} | hum : {h}")
         guardar_datos(t, h)
         sleep(2)
         print("")
