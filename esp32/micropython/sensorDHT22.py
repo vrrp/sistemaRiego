@@ -10,8 +10,7 @@ while True:
         t = sensor_dht22.temperature()
         h = sensor_dht22.humidity()
         
-        print("Temp :", t)
-        print("HR : ",  h)
+        print(f"Temp : {t} / Humedad : {h}")
         sleep(2)
         print("")
         
