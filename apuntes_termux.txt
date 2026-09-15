@@ -1,0 +1,6 @@
+El siguinete comando permite dsr permisos
+al directorio [storage] de termux
+
+
+	$ termux-setup-storage
+
