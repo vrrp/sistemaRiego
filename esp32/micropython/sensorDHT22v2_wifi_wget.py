@@ -1,4 +1,4 @@
-from machine import Pin
+rom machine import Pin
 from utime import sleep, sleep_ms, ticks_ms, ticks_diff
 import dht
 import network
@@ -10,17 +10,22 @@ import ntptime
 import time
 
 # ============ CONFIGURA ESTAS COSAS ============
+#WIFI_SSID = "NOMBRE_DE_TU_WIFI"
+#WIFI_PASS = "CLAVE_DE_TU_WIFI"
 WIFI_SSID = "NOMBRE_DE_TU_WIFI"
 WIFI_PASS = "CLAVE_DE_TU_WIFI"
+
 GITHUB_TOKEN = "PON_AQUI_TU_TOKEN"
 REPO = "tu_usuario/nombre_repositorio"
+
+
 ZONA_HORARIA = -5
-INTERVALO_ENVIO = 3600    # segundos = enviar a GitHub cada 1 hora
+INTERVALO_ENVIO = 21600    # segundos = enviar a GitHub cada 1 hora
 # ===============================================
 
 NOMBRE_LOCAL = "datos_met.csv"
 ENCABEZADO = "fecha_hora,temperatura,humedad\n"
-INTERVALO_LECTURA = 2000  # milisegundos entre lecturas del sensor (2 s)
+INTERVALO_LECTURA = 3600000 # 2000 milisegundos = 2 segundos   # milisegundos entre lecturas del sensor (2 s)
 
 sensor_dht22 = dht.DHT22(Pin(13))
 wifi = network.WLAN(network.STA_IF)
@@ -134,7 +139,7 @@ except OSError:
 
 if conectar_wifi():
     sincronizar_reloj()
-    enviar_a_github()     # enviar lo acumulado mientras estuvo apagado
+    #enviar_a_github()     # enviar lo acumulado mientras estuvo apagado
 
 servidor = crear_servidor()
 print("Servidor listo en el puerto 80.")
@@ -159,12 +164,14 @@ while True:
                 guardar_datos(t, h)
             except OSError:
                 print("Error data")
-
+        
         # Subir a GitHub cada hora
+        """
         if time.time() - ultimo_envio >= INTERVALO_ENVIO:
             ultimo_envio = time.time()
             if conectar_wifi():
                 enviar_a_github()
+        """
 
         # Si el WiFi se cayo, reintentar cada 60 s (sin frenar el resto)
         if not wifi.isconnected() and time.time() - ultimo_intento_wifi >= 60:

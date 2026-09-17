@@ -2,8 +2,10 @@ import socket
 import network
 from utime import sleep
 
-WIFI_SSID = "NOMBRE_DE_TU_WIFI"
-WIFI_PASS = "CLAVE_DE_TU_WIFI"
+WIFI_SSID = "vr.rojas"
+WIFI_PASS = "losinocentes40@"
+#WIFI_SSID = "NOMBRE_DE_TU_WIFI"
+#WIFI_PASS = "CLAVE_DE_TU_WIFI"
 
 ENCABEZADO = "fecha_hora,temperatura,humedad\n"
 
